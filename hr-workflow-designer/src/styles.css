@@ -1,0 +1,421 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  color: #0f172a;
+  background-color: #f3f4f6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  color: #e5e7eb;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-header {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.sidebar-node-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-node-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  cursor: grab;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.sidebar-node-card:active {
+  cursor: grabbing;
+}
+
+.sidebar-node-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+  border-color: #38bdf8;
+}
+
+.sidebar-node-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-node-desc {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* Main layout */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  gap: 8px;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.top-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.top-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) 360px;
+  gap: 10px;
+  height: calc(100vh - 70px);
+}
+
+/* Canvas */
+
+.canvas-wrapper {
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+/* Nodes (cards on canvas) */
+
+.node {
+  min-width: 180px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  font-size: 12px;
+}
+
+.node-pill {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.node-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.node-subtitle {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.node-tag {
+  margin-top: 6px;
+  display: inline-flex;
+  font-size: 10px;
+  border-radius: 999px;
+  background: #eff6ff;
+  padding: 2px 8px;
+  color: #1d4ed8;
+}
+
+.node--start .node-pill {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.node--task .node-pill {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.node--approval .node-pill {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.node--automated .node-pill {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.node--end .node-pill {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Right column */
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right-panel,
+.sim-panel {
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.panel-subtitle {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.panel-section {
+  margin-top: 8px;
+}
+
+.panel-section-inner {
+  margin-top: 4px;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.field-label {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.field-label.small {
+  font-size: 10px;
+}
+
+.field-input,
+.field-textarea,
+select {
+  margin-top: 3px;
+  width: 100%;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  background: #f9fafb;
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.field-input:focus,
+.field-textarea:focus,
+select:focus {
+  border-color: #38bdf8;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+}
+
+.panel-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 14px;
+}
+
+.checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* buttons */
+
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-ghost {
+  font-size: 11px;
+  border-radius: 999px;
+  padding: 5px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #0ea5e9, #6366f1);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #6b7280;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+/* key-value list */
+
+.kv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.kv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 4px;
+}
+
+.kv-key,
+.kv-value {
+  font-size: 12px;
+}
+
+/* Simulation */
+
+.sim-status {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.sim-status.ok {
+  color: #16a34a;
+}
+
+.sim-status.error {
+  color: #b91c1c;
+}
+
+.sim-issues {
+  margin: 4px 0 8px;
+  padding-left: 18px;
+  font-size: 11px;
+  color: #b91c1c;
+}
+
+.sim-steps {
+  max-height: 220px;
+  overflow: auto;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sim-step {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.sim-step-title {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sim-step-message {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.sim-chip {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.sim-chip.ok {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.sim-chip.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
