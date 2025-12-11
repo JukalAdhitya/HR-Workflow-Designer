@@ -15,8 +15,36 @@ HR Workflow Designer includes:
 - Modular, scalable architecture with TypeScript + React Flow
 
 ## 📁 Project Structure
+```bash
+src/
+  main.tsx
+  App.tsx                   # Main layout, orchestrates canvas + forms + simulation
 
-<img width="663" height="551" alt="image" src="https://github.com/user-attachments/assets/322743a3-a76f-437d-aff2-5aa16a9a2c83" />
+  types/
+    workflow.ts             # TypeScript interfaces for nodes, edges, automation actions, simulation
+
+  api/
+    mockApi.ts              # Local mock API: GET /automations & POST /simulate
+
+  hooks/
+    useWorkflow.ts          # Core workflow state manager (nodes, edges, selection, add/delete)
+
+  components/
+    canvas/
+      WorkflowCanvas.tsx    # React Flow canvas with custom node types + interactions
+
+    layout/
+      Sidebar.tsx           # Node palette (Start, Task, Approval, Automated, End)
+      NodeFormPanel.tsx     # Right-side dynamic configuration panel
+      SimulationPanel.tsx   # Shows workflow simulation output
+
+    nodes/
+      StartNode.tsx
+      TaskNode.tsx
+      ApprovalNode.tsx
+      AutomatedNode.tsx
+      EndNode.tsx
+```
 
 
 ## 🧱 Features
@@ -56,10 +84,13 @@ Each node exposes configurable attributes such as:
 
 ### GET /automations
 
+```json
 [
   { "id": "send_email", "label": "Send Email", "params": ["to", "subject"] },
   { "id": "generate_doc", "label": "Generate Document", "params": ["template", "recipient"] }
 ]
+```
+
 
 ### POST /simulate
 
@@ -73,22 +104,30 @@ Accepts workflow graph JSON and returns:
 
 ### Install dependencies
 
+```bash
 npm install
+```
 
 ### Run development server
 
+```bash
 npm run dev
+```
 
 Access the application at:
 
+```bash
 http://localhost:5173
+```
 
 ## 🧪 Testing
 
 ### Test GET /automations (Browser Console)
 
+```bash
 import { getAutomations } from './src/api/mockApi'
 getAutomations().then(console.log)
+```
 
 ### Workflow Simulation
 
