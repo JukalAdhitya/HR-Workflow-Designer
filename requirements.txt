@@ -1,0 +1,35 @@
+#1. Frontend Framework
+react: ^18.x
+react-dom: ^18.x
+
+#2. Build Tool
+vite: ^5.x
+@vitejs/plugin-react: ^4.x
+
+#3. Workflow Engine UI
+reactflow: ^11.x
+
+#4. State & Type Safety
+typescript: ^5.x
+@types/react: ^18.x
+@types/react-dom: ^18.x
+
+#5. UI / Styling (Optional but Recommended)
+tailwindcss: ^3.x
+postcss: ^8.x
+autoprefixer: ^10.x
+
+#6. Development Utilities
+eslint: ^8.x
+@typescript-eslint/eslint-plugin: ^6.x
+@typescript-eslint/parser: ^6.x
+
+#7. Mock API Layer
+msw: ^2.x             # Mock API mocking library
+json-server: ^1.x     # Simple REST mock server
+
+#✅ Development Commands
+npm install
+npm run dev
+npm run build
+npm run preview
