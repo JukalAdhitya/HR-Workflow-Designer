@@ -1,5 +1,5 @@
 
-# 🧠 HR Workflow Designer !
+# HR Workflow Designer
 
 A visual HR workflow building and simulation tool. This application enables HR teams to design, configure, validate, and simulate workflows such as onboarding, approval cycles, and document verification processes.
 
