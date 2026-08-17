@@ -1,11 +1,10 @@
 import type { Edge, Node } from 'reactflow';
-
 export type WorkflowNodeType = 'start' | 'task' | 'approval' | 'automated' | 'end';
 
 export interface WorkflowNodeData {
   type: WorkflowNodeType;
   label: string;
-
+  
   // Start node
   metadata?: { key: string; value: string }[];
 
